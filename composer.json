@@ -65,9 +65,15 @@
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
         "refactor": "rector",
-        "lint": "pint",
+        "lint": [
+            "pint",
+            "npx prettier --write resources/"
+        ],
         "test:refactor": "rector --dry-run",
-        "test:lint": "pint --test",
+        "test:lint": [
+            "pint --test",
+            "npx prettier --check resources/"
+        ],
         "test:types": "vendor/bin/pest --type-coverage --memory-limit=512M --min=100",
         "test:static-analysis": "phpstan analyse --ansi --memory-limit=512M",
         "test:unit": "herd coverage vendor/bin/pest --colors=always --coverage --parallel --min=100",
