@@ -64,18 +64,18 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
-        "rector": "rector",
+        "rector": "refactor",
         "lint": "pint",
-        "test:rector": "rector --dry-run",
+        "test:refactor": "rector --dry-run",
         "test:lint": "pint --test",
         "test:types": "vendor/bin/pest --type-coverage --memory-limit=512M --min=100",
-        "test:phpstan": "phpstan analyse --ansi --memory-limit=512M",
+        "test:static-analysis": "phpstan analyse --ansi --memory-limit=512M",
         "test:unit": "herd coverage vendor/bin/pest --colors=always --coverage --parallel --min=100",
         "test": [
-            "@test:rector",
+            "@test:refactor",
             "@test:lint",
             "@test:types",
-            "@test:phpstan",
+            "@test:static-analysis",
             "@test:unit"
         ]
     },

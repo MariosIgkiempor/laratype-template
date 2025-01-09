@@ -7,6 +7,36 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About the Template
+
+This template is a starting point for a new Laravel application.
+
+It is built on top of [Laravel Jetstream](https://github.com/laravel/jetstream) and includes the following tools pre-configured with sensible defaults:
+
+- [RectorPHP](https://github.com/rectorphp/rector) for automatic refactoring
+- [Larastan](https://github.com/nunomaduro/larastan) for static analysis
+- [Pint](https://github.com/laravel/pint) for code formatting
+- [PestPHP](https://pestphp.com) for testing
+    - [Type Coverage Plugin](https://github.com/pestphp/pest-plugin-type-coverage) for type-safe testing
+    - [Test Coverage](https://pestphp.com/docs/test-coverage)
+
+By default, the composer commands are configured to 100% test and type coverage, and maximum strictness for Larastan.
+
+You can run the tools with:
+
+```bash
+composer test       # for all tests, including Rector, Pint and Larastan dry runs
+
+composer test:unit  # for unit tests
+composer test:type  # for PestPHP type coverage tests
+composer test:lint  # for Pint dry run
+composer test:static-analysis # for Larastan static analysis
+composer test:refactor  # for RectorPHP dry run
+
+composer lint       # for Pint code formatting
+composer refactor   # for RectorPHP refactoring
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
