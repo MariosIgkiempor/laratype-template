@@ -1,0 +1,52 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Models\Team;
+use App\Models\User;
+use Laravel\Jetstream\Features;
+use Laravel\Jetstream\Http\Livewire\DeleteUserForm;
+use Livewire\Livewire;
+
+test('user accounts can be deleted', function (): void {
+    $this->actingAs($user = User::factory()->create());
+
+    Livewire::test(DeleteUserForm::class)
+        ->set('password', 'password')
+        ->call('deleteUser');
+
+    expect($user->fresh())->toBeNull();
+})->skip(fn (): bool => ! Features::hasAccountDeletionFeatures(), 'Account deletion is not enabled.');
+
+test('correct password must be provided before account can be deleted', function (): void {
+    $this->actingAs($user = User::factory()->create());
+
+    Livewire::test(DeleteUserForm::class)
+        ->set('password', 'wrong-password')
+        ->call('deleteUser')
+        ->assertHasErrors(['password']);
+
+    expect($user->fresh())->not->toBeNull();
+})->skip(fn (): bool => ! Features::hasAccountDeletionFeatures(), 'Account deletion is not enabled.');
+
+test('will also delete teams the user owns', function (): void {
+    $this->actingAs($user = User::factory()->create());
+
+    $teamsCount = 3;
+    $teams = Team::factory()
+        ->count($teamsCount)
+        ->for($user, 'owner')
+        ->create();
+
+    expect($user->ownedTeams)->toHaveCount($teamsCount);
+
+    Livewire::test(DeleteUserForm::class)
+        ->set('password', 'password')
+        ->call('deleteUser');
+
+    expect($user->fresh())->toBeNull();
+
+    foreach ($teams as $team) {
+        expect($team->fresh())->toBeNull();
+    }
+})->skip(fn (): bool => ! Features::hasAccountDeletionFeatures(), 'Account deletion is not enabled.');
