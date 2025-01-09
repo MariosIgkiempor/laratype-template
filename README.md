@@ -18,12 +18,14 @@ You can run the tools with:
 ```bash
 composer test       # for all tests, including Rector, Pint and Larastan dry runs
 
-composer test:unit  # for unit tests
-composer test:type  # for PestPHP type coverage tests
-composer test:lint  # for Pint dry run
-composer test:static-analysis # for Larastan static analysis
+# `composer test` will run the tools in the following order:
 composer test:refactor  # for RectorPHP dry run
+composer test:lint  # for Pint dry run
+composer test:type  # for PestPHP type coverage tests
+composer test:static-analysis # for Larastan static analysis
+composer test:unit  # for unit (and feature) tests with PestPHP
 
+# also exposed as composer scripts:
 composer lint       # for Pint code formatting
 composer refactor   # for RectorPHP refactoring
 ```
