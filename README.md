@@ -14,6 +14,28 @@ It is built on top of [Laravel Jetstream](https://github.com/laravel/jetstream) 
     - Configured per [this article](https://mattstauffer.com/blog/how-to-set-up-prettier-on-a-laravel-app-to-lint-tailwind-class-order-and-more/) to automatically format Tailwind CSS classes inside Blade files
     - Using [prettier-plugin-blade](https://www.npmjs.com/package/prettier-plugin-blade) and [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 
+## Getting Started
+
+```bash
+cp .env.example .env
+```
+
+Update the `.env` file with your `APP_NAME`, `APP_URL`, local database credentials.
+Feel free to change any other variables to fit your local environment needs.
+
+```bash
+composer install
+npm install
+php artisan key:generate
+php artisan migrate
+```
+
+At this point, your application is ready to start developing.
+
+You can run `composer test`, which should yield a passing test suite, with 100% test and type coverage.
+
+## Tools
+
 Tools are exposed as [Composer](https://getcomposer.org/) scripts.
 
 ```bash
