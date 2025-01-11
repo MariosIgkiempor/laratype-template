@@ -44,6 +44,23 @@
             "Tests\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
@@ -66,7 +83,7 @@
         ],
         "refactor": "rector",
         "lint:php-file": [
-            "pint @additional_args"
+            "@php vendor/bin/pint @additional_args"
         ],
         "lint:blade-file": [
             "npx prettier --write @additional_args"
@@ -75,13 +92,13 @@
             "@lint:php-file",
             "@lint:blade-file resources/"
         ],
-        "test:refactor": "rector --dry-run",
+        "test:refactor": "@php vendor/bin/rector --dry-run",
         "test:lint": [
-            "pint --test",
+            "@php vendor/bin/pint --test",
             "npx prettier --check resources/"
         ],
-        "test:types": "vendor/bin/pest --type-coverage --memory-limit=512M --min=100",
-        "test:static-analysis": "phpstan analyse --ansi --memory-limit=512M",
+        "test:types": "@php vendor/bin/pest --type-coverage --memory-limit=512M --min=100",
+        "test:static-analysis": "@php vendor/bin/phpstan analyse --ansi --memory-limit=512M",
         "test:unit": "herd coverage vendor/bin/pest --colors=always --coverage --parallel --min=100",
         "test": [
             "@test:refactor",
@@ -90,21 +107,5 @@
             "@test:static-analysis",
             "@test:unit"
         ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "php-http/discovery": true
-        }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    }
 }
