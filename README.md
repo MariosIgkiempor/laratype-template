@@ -19,20 +19,20 @@ By default, the composer commands are configured to 100% test and type coverage,
 You can run the tools with:
 
 ```bash
-composer test       # for all tests, including Rector, Pint and Larastan dry runs
+composer test       # @test:refactor && @test:lint && @test:types && @test:static-analysis && @test:unit
 
 # `composer test` will run the tools in the following order:
-composer test:refactor  # RectorPHP dry run
-composer test:lint      # Pint & Prettier dry run
-composer test:type      # PestPHP type coverage tests
-composer test:static-analysis # Larastan static analysis
-composer test:unit      # PestPHP unit (and feature) tests
+composer test:refactor  # rector --dry-run
+composer test:lint      # pint --test && prettier --check resources/
+composer test:type      # pest --type-coverage --colors=always --memory-limit=512M --min=100
+composer test:static-analysis # phpstan analyse --ansi --memory-limit=512M
+composer test:unit      # pest --colors=always --coverage --parallel --min=100
 
-# also exposed as composer scripts:
-composer lint             # Pint & Prettier code formatting
-composer lint:php-file    # Pint code formatting
-composer lint:blade-file  # Prettier code formatting
-composer refactor         # RectorPHP refactoring
+# Tools are also individually exposed as composer scripts:
+composer lint              # pint && prettier --write resources/
+composer lint:php <file>   # pint <file>
+composer lint:blade <file> # prettier --write <file>
+composer refactor          # rector
 ```
 
 ## License
