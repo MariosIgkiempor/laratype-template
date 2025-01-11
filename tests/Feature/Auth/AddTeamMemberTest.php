@@ -10,12 +10,12 @@ use Illuminate\Auth\Access\AuthorizationException;
 test('team members can be added to teams', function (): void {
     Mail::fake();
 
-    $user = User::factory()->create()->fresh();
+    $user = User::factory()->create();
     $this->actingAs($user);
 
     $team = app(CreateTeam::class)->create($user, ['name' => 'test team']);
 
-    $otherUser = User::factory()->create()->fresh();
+    $otherUser = User::factory()->create();
 
     AddTeamMember::run(
         $user,
@@ -32,8 +32,8 @@ test('team members can be added to teams', function (): void {
 });
 
 test('only team owner can add team members', function (): void {
-    $user = User::factory()->create()->fresh();
-    $otherUser = User::factory()->create()->fresh();
+    $user = User::factory()->create();
+    $otherUser = User::factory()->create();
 
     $team = app(CreateTeam::class)->create($user, ['name' => 'test team']);
 

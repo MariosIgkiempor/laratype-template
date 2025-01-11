@@ -8,7 +8,7 @@ use Laravel\Jetstream\Http\Livewire\TwoFactorAuthenticationForm;
 use Livewire\Livewire;
 
 test('two factor authentication can be enabled', function (): void {
-    $this->actingAs($user = User::factory()->create()->fresh());
+    $this->actingAs($user = User::factory()->create());
 
     $this->withSession(['auth.password_confirmed_at' => time()]);
 
@@ -22,7 +22,7 @@ test('two factor authentication can be enabled', function (): void {
 })->skip(fn (): bool => ! Features::canManageTwoFactorAuthentication(), 'Two factor authentication is not enabled.');
 
 test('recovery codes can be regenerated', function (): void {
-    $this->actingAs($user = User::factory()->create()->fresh());
+    $this->actingAs($user = User::factory()->create());
 
     $this->withSession(['auth.password_confirmed_at' => time()]);
 
@@ -39,7 +39,7 @@ test('recovery codes can be regenerated', function (): void {
 })->skip(fn (): bool => ! Features::canManageTwoFactorAuthentication(), 'Two factor authentication is not enabled.');
 
 test('two factor authentication can be disabled', function (): void {
-    $this->actingAs($user = User::factory()->create()->fresh());
+    $this->actingAs($user = User::factory()->create());
 
     $this->withSession(['auth.password_confirmed_at' => time()]);
 

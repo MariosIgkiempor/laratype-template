@@ -6,16 +6,22 @@ namespace Database\Factories;
 
 use App\Models\Team;
 use App\Models\User;
+use Database\Factories\Contracts\RefreshAfterCreating;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory<User>
  */
 final class UserFactory extends Factory
 {
+    /**
+     * @use RefreshAfterCreating<User>
+     */
+    use RefreshAfterCreating;
+
     /**
      * The current password being used by the factory.
      */

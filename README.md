@@ -25,7 +25,8 @@ Feel free to change any other variables to fit your local environment needs.
 
 ```bash
 composer install
-npm install
+npm install && npm run build
+touch database/database.sqlite
 php artisan key:generate
 php artisan migrate
 ```

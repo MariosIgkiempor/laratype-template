@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 beforeEach(function (): void {
-    $this->user = User::factory()->create()->fresh();
+    $this->user = User::factory()->create();
 });
 
 it('updates basic information properly', function (): void {

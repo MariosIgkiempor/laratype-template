@@ -13,7 +13,7 @@ it('loads fine without a user', function (): void {
 });
 
 it('loads fine with a user', function (): void {
-    $this->actingAs($user = User::factory()->create()->fresh());
+    $this->actingAs($user = User::factory()->create());
 
     $content = $this->get('/')
         ->assertOk();
@@ -28,7 +28,7 @@ it('loads the app layout fine without a user', function (): void {
 });
 
 it('loads the app layout fine with a user', function (): void {
-    $this->actingAs($user = User::factory()->create()->fresh());
+    $this->actingAs($user = User::factory()->create());
 
     $this->get('/dashboard')
         ->assertSee(config('app.name'))
