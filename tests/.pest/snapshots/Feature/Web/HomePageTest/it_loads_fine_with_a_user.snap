@@ -11,24 +11,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Styles / Scripts -->
-                    <link rel="preload" as="style" href="https://laravel-template.test/build/assets/app-BJsd66YH.css" /><link rel="modulepreload" href="https://laravel-template.test/build/assets/app-Xaw6OIO1.js" /><link rel="stylesheet" href="https://laravel-template.test/build/assets/app-BJsd66YH.css" data-navigate-track="reload" /><script type="module" src="https://laravel-template.test/build/assets/app-Xaw6OIO1.js" data-navigate-track="reload"></script>
-<script>
-     window.addEventListener('load', () => window.setTimeout(() => {
-        const makeLink = (asset) => {
-            const link = document.createElement('link')
-
-            Object.keys(asset).forEach((attribute) => {
-                link.setAttribute(attribute, asset[attribute])
-            })
-
-            return link
-        }
-
-        const fragment = new DocumentFragment;
-        [].forEach((asset) => fragment.append(makeLink(asset)))
-        document.head.append(fragment)
-     }))
-</script>            </head>
+                    <script type="module" src="https://laravel-template.test:5173/@vite/client" data-navigate-track="reload"></script><link rel="stylesheet" href="https://laravel-template.test:5173/resources/css/app.css" data-navigate-track="reload" /><script type="module" src="https://laravel-template.test:5173/resources/js/app.js" data-navigate-track="reload"></script>            </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
             <img
@@ -353,7 +336,7 @@
                     </main>
 
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                        Laravel v11.37.0 (PHP v8.4.1)
+                        Laravel v11.40.0 (PHP v8.4.3)
                     </footer>
                 </div>
             </div>
