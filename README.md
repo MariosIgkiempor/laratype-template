@@ -29,8 +29,8 @@ npm install && npm run build
 touch database/database.sqlite
 php artisan key:generate
 php artisan migrate
-composer refactor
 vendor/bin/pest --update-snapshots
+composer refactor # read note below
 ```
 
 > [!WARNING]
