@@ -33,7 +33,11 @@ php artisan migrate
 
 At this point, your application is ready to start developing.
 
-You can run `composer test`, which should yield a passing test suite, with 100% test and type coverage.
+You can run `composer refactor && composer test`, which should yield a passing test suite, with 100% test and type coverage.
+
+> [!WARNING]
+> Rector may complain when you `composer install` or `composer require` because these commands can overwrite files in your `/bootstrap` directory.
+> Simply run `composer refactor` to make Rector happy 👼
 
 ## Tools
 
