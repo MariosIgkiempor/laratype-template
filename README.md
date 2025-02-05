@@ -29,15 +29,17 @@ npm install && npm run build
 touch database/database.sqlite
 php artisan key:generate
 php artisan migrate
+composer refactor
+vendor/bin/pest --update-snapshots
 ```
-
-At this point, your application is ready to start developing.
-
-You can run `composer refactor && composer test`, which should yield a passing test suite, with 100% test and type coverage.
 
 > [!WARNING]
 > Rector may complain when you `composer install` or `composer require` because these commands can overwrite files in your `/bootstrap` directory.
 > Simply run `composer refactor` to make Rector happy 👼
+
+At this point, you can start the development server with `composer dev`.
+
+You can run `composer test`, which should yield a passing test suite, with 100% test and type coverage.
 
 ## Tools
 
